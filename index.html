@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semester 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #1a73e8;
+        --secondary-color: #34a853;
+        --accent-color: #fbbc04;
+        --light-color: #f8f9fa;
+        --dark-color: #202124;
+        --red-color: #ea4335;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5f7fa;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Header Styles */
+      .top-header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 0;
+      }
+
+      .main-header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .school-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 0;
+      }
+
+      .school-motto {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0;
+      }
+
+      /* Navigation Styles */
+      .navbar {
+        padding: 0;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--dark-color);
+        font-weight: 500;
+        padding: 1rem 1.2rem;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: var(--primary-color);
+        background-color: rgba(26, 115, 232, 0.1);
+      }
+
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      .navbar-nav .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary-color);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, rgba(26, 115, 232, 0.9), rgba(52, 168, 83, 0.8)), url("https://picsum.photos/seed/school/1920/500.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 80px 0;
+        margin-bottom: 40px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .hero-description {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .section-subtitle {
+        color: #666;
+        margin-bottom: 40px;
+      }
+
+      /* Card Styles */
+      .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 10px;
+      }
+
+      .card-text {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      /* Staff Card Styles */
+      .staff-card {
+        text-align: center;
+        padding: 20px;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+        height: 100%;
+      }
+
+      .staff-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .staff-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 15px;
+        border: 4px solid var(--primary-color);
+      }
+
+      .staff-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+      }
+
+      .staff-position {
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .staff-duty {
+        color: #666;
+        font-size: 0.85rem;
+      }
+
+      /* Facility Card Styles */
+      .facility-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+        height: 100%;
+      }
+
+      .facility-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .facility-icon {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.8rem;
+        margin: 20px auto;
+      }
+
+      .facility-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .facility-description {
+        color: #666;
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0 20px 20px;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 60px 0;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* Search Section */
+      .search-section {
+        background-color: white;
+        padding: 40px 0;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 40px;
+      }
+
+      .search-box {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 15px 50px 15px 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: 50px;
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+      }
+
+      .search-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .search-btn:hover {
+        background: #1557b0;
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 40px 0 20px;
+      }
+
+      .footer-widget h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-widget h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: var(--accent-color);
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .contact-info i {
+        margin-right: 10px;
+        color: var(--accent-color);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Tab Styles */
+      .nav-tabs {
+        border-bottom: none;
+        margin-bottom: 30px;
+      }
+
+      .nav-tabs .nav-link {
+        color: var(--dark-color);
+        font-weight: 500;
+        border: none;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 50px;
+        background-color: #f0f0f0;
+        transition: all 0.3s;
+      }
+
+      .nav-tabs .nav-link:hover {
+        background-color: rgba(26, 115, 232, 0.1);
+      }
+
+      .nav-tabs .nav-link.active {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .section {
+          padding: 40px 0;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+      }
+
+      /* Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeInUp {
+        animation: fadeInUp 0.6s ease-out;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Header -->
+    <div class="top-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-envelope me-2"></i>
+              <span>info@sdn03.sch.id</span>
+              <i class="fas fa-phone ms-4 me-2"></i>
+              <span>(021) 1234567</span>
+            </div>
+          </div>
+          <div class="col-md-6 text-end">
+            <div class="d-flex justify-content-end align-items-center">
+              <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+              <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+      <div class="container py-3">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <div class="logo-container">
+              <img src="https://z-cdn-media.chatglm.cn/files/28db15da-a2e4-4c57-ae10-bf429738ea16.png?auth_key=1867430647-e88902e2223442c691f047327c843a5d-0-f962e5be15f44b8a2560ac70049eeb14" alt="Logo SDN 03" class="logo" />
+              <div>
+                <h1 class="school-name">SEKOLAH DASAR NEGERI 03</h1>
+                <p class="school-motto">Terampil, Berkarakter, Berprestasi</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <nav class="navbar navbar-expand-lg">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#kepegawaian">Kepegawaian</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#sarana">Sarana & Prasarana</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#akademik">Akademik</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#siswa">Siswa</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#perpustakaan">Perpustakaan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#layanan">Layanan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#pencarian">Pencarian</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container text-center">
+        <h2 class="hero-title animate-fadeInUp">Selamat Datang di SDN 03</h2>
+        <p class="hero-description animate-fadeInUp">Membentuk generasi yang cerdas, berkarakter, dan siap menghadapi masa depan dengan pendidikan berkualitas dan lingkungan belajar yang menyenangkan</p>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="pencarian" class="container">
+      <div class="search-section">
+        <h2 class="text-center mb-4">Pencarian Informasi</h2>
+        <div class="search-box">
+          <input type="text" class="search-input" placeholder="Cari informasi guru, siswa, berita, atau dokumen..." />
+          <button class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="kepegawaian" class="section">
+      <div class="container">
+        <h2 class="section-title">Kepegawaian</h2>
+        <p class="section-subtitle">Tim pendidik dan tenaga kependidikan yang profesional dan berdedikasi</p>
+
+        <ul class="nav nav-tabs" id="staffTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="leadership-tab" data-bs-toggle="tab" data-bs-target="#leadership" type="button" role="tab">Kepemimpinan</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="teachers-tab" data-bs-toggle="tab" data-bs-target="#teachers" type="button" role="tab">Guru</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab">Tenaga Kependidikan</button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="staffTabsContent">
+          <div class="tab-pane fade show active" id="leadership" role="tabpanel">
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Gilang.jpeg" alt="Gilang" class="staff-avatar" />
+                  <h3 class="staff-name">Gilang Prayoga</h3>
+                  <p class="staff-position">Kepala Sekolah</p>
+                  <p class="staff-duty">Memimpin dan mengelola seluruh kegiatan pendidikan di SDN 03</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Afkar.jpeg" alt="Afkar" class="staff-avatar" />
+                  <h3 class="staff-name">Afkar Rizky Hidayat</h3>
+                  <p class="staff-position">Wakil Kepala Sekolah</p>
+                  <p class="staff-duty">Membantu kepala sekolah dalam mengelola operasional sekolah</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Puri.jpg" alt="Dwi" class="staff-avatar" />
+                  <h3 class="staff-name">Puri Mutmainah</h3>
+                  <p class="staff-position">Bendahara</p>
+                  <p class="staff-duty">Bertanggung jawab mengelola dan mencatat keuangan agar penggunaan dana tertib dan transparan.</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Uwi.jpg" alt="Dwi" class="staff-avatar" />
+                  <h3 class="staff-name">Dwi Latifah Nuraini</h3>
+                  <p class="staff-position">Wakasek Kurikulum</p>
+                  <p class="staff-duty">Mengembangkan dan mengelola kurikulum sekolah</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Winarni.jpg" alt="Winarni" class="staff-avatar" />
+                  <h3 class="staff-name">Winarni Gustawati</h3>
+                  <p class="staff-position">Wakasek Kesiswaan</p>
+                  <p class="staff-duty">Mengelola kegiatan kemahasiswaan dan pembinaan siswa</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Hilma.jpg" alt="Hilma" class="staff-avatar" />
+                  <h3 class="staff-name">Hilma Tazkiya</h3>
+                  <p class="staff-position">Wakasek Sarana</p>
+                  <p class="staff-duty">Mengelola sarana dan prasarana sekolah</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="https://picsum.photos/seed/siti/200/200.jpg" alt="Siti" class="staff-avatar" />
+                  <h3 class="staff-name">Siti Waharbane</h3>
+                  <p class="staff-position">Wakasek Humas</p>
+                  <p class="staff-duty">Mengelola komunikasi dan hubungan masyarakat sekolah</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="teachers" role="tabpanel">
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Awalia.png" alt="Awalia" class="staff-avatar" />
+                  <h3 class="staff-name">Awalia Mabruroh</h3>
+                  <p class="staff-position">Guru BK</p>
+                  <p class="staff-duty">Memberikan bimbingan konseling kepada siswa</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="https://picsum.photos/seed/rima/200/200.jpg" alt="Rima" class="staff-avatar" />
+                  <h3 class="staff-name">Rima Fadilah</h3>
+                  <p class="staff-position">Guru Wali Kelas</p>
+                  <p class="staff-duty">Membina dan mengelola kelas sebagai wali kelas</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Muti.jpeg" alt="Muti" class="staff-avatar" />
+                  <h3 class="staff-name">Muti</h3>
+                  <p class="staff-position">Guru Mata Pelajaran</p>
+                  <p class="staff-duty">Mengajar mata pelajaran inti di kelas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="staff" role="tabpanel">
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="https://picsum.photos/seed/salwa/200/200.jpg" alt="Salwa" class="staff-avatar" />
+                  <h3 class="staff-name">Salwa Adelia</h3>
+                  <p class="staff-position">Tata Usaha</p>
+                  <p class="staff-duty">Mengelola administrasi dan tata usaha sekolah</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="https://picsum.photos/seed/anisa/200/200.jpg" alt="Anisa" class="staff-avatar" />
+                  <h3 class="staff-name">Anisa Ramadani</h3>
+                  <p class="staff-position">Laboratorium</p>
+                  <p class="staff-duty">Mengelola laboratorium IPA dan Komputer</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="staff-card">
+                  <img src="Zahra.jpeg" alt="Zahra" class="staff-avatar" />
+                  <h3 class="staff-name">Zahra Aulia</h3>
+                  <p class="staff-position">Perpustakaan</p>
+                  <p class="staff-duty">Mengelola perpustakaan dan layanan buku</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="sarana" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">Sarana dan Prasarana</h2>
+        <p class="section-subtitle">Fasilitas lengkap untuk mendukung kegiatan belajar mengajar yang optimal</p>
+
+        <div class="row">
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-flask"></i>
+              </div>
+              <h3 class="facility-name">Laboratorium</h3>
+              <p class="facility-description">Laboratorium IPA dan Komputer lengkap untuk praktikum siswa</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <h3 class="facility-name">Perpustakaan</h3>
+              <p class="facility-description">Koleksi buku lengkap untuk menunjang literasi siswa</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-chalkboard"></i>
+              </div>
+              <h3 class="facility-name">Ruang Kelas</h3>
+              <p class="facility-description">9 ruang kelas nyaman dengan fasilitas pembelajaran modern</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <h3 class="facility-name">Ruang Kepala Sekolah</h3>
+              <p class="facility-description">Rangan kerja kepala sekolah yang representatif</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="facility-name">Ruang Guru</h3>
+              <p class="facility-description">Rangka kerja guru yang nyaman untuk persiapan mengajar</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3 class="facility-name">Ruang BK</h3>
+              <p class="facility-description">Ruang konseling pribadi untuk siswa</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-medkit"></i>
+              </div>
+              <h3 class="facility-name">Ruang UKS</h3>
+              <p class="facility-description">Unit Kesehatan Sekolah dengan peralatan medis dasar</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-mosque"></i>
+              </div>
+              <h3 class="facility-name">Mushola</h3>
+              <p class="facility-description">Tempat ibadah yang nyaman untuk siswa dan guru</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-running"></i>
+              </div>
+              <h3 class="facility-name">Lapangan</h3>
+              <p class="facility-description">Lapangan olahraga untuk berbagai kegiatan ekstrakurikuler</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h3 class="facility-name">Ruang TU</h3>
+              <p class="facility-description">Ruang tata usaha untuk administrasi sekolah</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-theater-masks"></i>
+              </div>
+              <h3 class="facility-name">Aula</h3>
+              <p class="facility-description">Aula multifungsi untuk acara sekolah</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="facility-card">
+              <div class="facility-icon">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <h3 class="facility-name">Kantin</h3>
+              <p class="facility-description">Kantin sehat dengan berbagai pilihan makanan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Section -->
+    <section id="akademik" class="section">
+      <div class="container">
+        <h2 class="section-title">Akademik</h2>
+        <p class="section-subtitle">Program akademik yang komprehensif untuk pengembangan siswa</p>
+
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="Kurikulum.png" class="card-img-top" alt="Kurikulum" />
+              <div class="card-body">
+                <h3 class="card-title">Kurikulum</h3>
+                <p class="card-text">Menerapkan Kurikulum Merdeka dengan pendekatan pembelajaran berbasis proyek dan pengembangan karakter siswa</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="Kalender.png" class="card-img-top" alt="Kalender Akademik" />
+              <div class="card-body">
+                <h3 class="card-title">Kalender Akademik</h3>
+                <p class="card-text">Jadwal kegiatan akademik tahunan termasuk ujian, libur, dan kegiatan penting lainnya</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="Jadwal.png" class="card-img-top" alt="Jadwal Pelajaran" />
+              <div class="card-body">
+                <h3 class="card-title">Jadwal Pelajaran</h3>
+                <p class="card-text">Struktur jadwal pelajaran yang teratur untuk optimalisasi proses pembelajaran</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mt-5 mb-4">Ekstrakurikuler</h3>
+        <div class="row">
+          <div class="col-md-2 col-sm-4 col-6 mb-4">
+            <div class="text-center">
+              <div class="facility-icon mx-auto mb-3">
+                <i class="fas fa-first-aid"></i>
+              </div>
+              <h5>PMR</h5>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-4 col-6 mb-4">
+            <div class="text-center">
+              <div class="facility-icon mx-auto mb-3">
+                <i class="fas fa-hiking"></i>
+              </div>
+              <h5>Pramuka</h5>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-4 col-6 mb-4">
+            <div class="text-center">
+              <div class="facility-icon mx-auto mb-3">
+                <i class="fas fa-flag"></i>
+              </div>
+              <h5>Paskibra</h5>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-4 col-6 mb-4">
+            <div class="text-center">
+              <div class="facility-icon mx-auto mb-3">
+                <i class="fas fa-basketball-ball"></i>
+              </div>
+              <h5>Basket</h5>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-4 col-6 mb-4">
+            <div class="text-center">
+              <div class="facility-icon mx-auto mb-3">
+                <i class="fas fa-volleyball-ball"></i>
+              </div>
+              <h5>Voli</h5>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mt-5 mb-4">Sistem Informasi</h3>
+        <div class="row">
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="fas fa-calendar-check fa-3x text-primary mb-3"></i>
+                <h5>Penjadwalan Pelajaran</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="fas fa-user-check fa-3x text-success mb-3"></i>
+                <h5>Absensi</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="fas fa-comments fa-3x text-warning mb-3"></i>
+                <h5>Komunikasi</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="fas fa-book-open fa-3x text-danger mb-3"></i>
+                <h5>Pengelolaan Kurikulum</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Students Section -->
+    <section id="siswa" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">Siswa</h2>
+        <p class="section-subtitle">Informasi mengenai siswa dan prestasi yang diraih</p>
+
+        <div class="row mb-5">
+          <div class="col-md-4 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-users fa-4x text-primary mb-3"></i>
+                <h3 class="card-title">225</h3>
+                <p class="card-text">Jumlah Siswa</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-trophy fa-4x text-warning mb-3"></i>
+                <h3 class="card-title">15+</h3>
+                <p class="card-text">Prestasi Tahun Ini</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-graduation-cap fa-4x text-success mb-3"></i>
+                <h3 class="card-title">95%</h3>
+                <p class="card-text">Tingkat Kelulusan</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mb-4">Prestasi Siswa</h3>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="Matematika.png" class="card-img-top" alt="Prestasi 1" />
+              <div class="card-body">
+                <h5 class="card-title">Juara 1 Olimpiade Matematika Tingkat Kecamatan</h5>
+                <p class="card-text">Siswa kami berhasil meraih juara 1 dalam Olimpiade Matematika tingkat kecamatan tahun 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="seni.png" class="card-img-top" alt="Prestasi 2" />
+              <div class="card-body">
+                <h5 class="card-title">Juara 2 Festival Seni Sekolah Dasar</h5>
+                <p class="card-text">Tim seni kami meraih juara 2 dalam Festival Seni Sekolah Dasar tingkat kabupaten</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="Olahraga.png" class="card-img-top" alt="Prestasi 3" />
+              <div class="card-body">
+                <h5 class="card-title">Juara 3 Kompetisi Olahraga</h5>
+                <p class="card-text">Tim bola voli kami berhasil meraih juara 3 dalam kompetisi olahraga antar sekolah</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Library Section -->
+    <section id="perpustakaan" class="section">
+      <div class="container">
+        <h2 class="section-title">Perpustakaan</h2>
+        <p class="section-subtitle">Mendorong budaya literasi di kalangan siswa</p>
+
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title">Layanan Perpustakaan</h3>
+                <p class="card-text">Perpustakaan kami menyediakan berbagai layanan untuk mendukung kegiatan belajar siswa:</p>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Peminjaman buku fisik</li>
+                  <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>E-book dan sumber digital</li>
+                  <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Ruang baca yang nyaman</li>
+                  <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Program literasi bulanan</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Bimbingan penelitian sederhana</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <img src="Perpus.jpg" class="card-img-top" alt="Perpustakaan" />
+              <div class="card-body">
+                <h5 class="card-title">Jam Layanan</h5>
+                <p class="card-text">Senin - Jumat: 07:30 - 14:00</p>
+                <p class="card-text">Sabtu: 07:30 - 12:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mt-5 mb-4">Koleksi Buku</h3>
+        <div class="row">
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                <h5>Buku Pelajaran</h5>
+                <p>1.500+ judul</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-book-reader fa-3x text-success mb-3"></i>
+                <h5>Buku Cerita</h5>
+                <p>800+ judul</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-microscope fa-3x text-warning mb-3"></i>
+                <h5>Buku Sains</h5>
+                <p>500+ judul</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <i class="fas fa-laptop fa-3x text-danger mb-3"></i>
+                <h5>E-Book</h5>
+                <p>300+ judul</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">Layanan</h2>
+        <p class="section-subtitle">Layanan sekolah untuk memudahkan akses informasi</p>
+
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-school text-primary me-2"></i>Layanan PPDB</h3>
+                <p class="card-text">Pendaftaran Peserta Didik Baru secara online untuk memudahkan orang tua mendaftarkan anaknya</p>
+                <button class="btn btn-primary">Daftar Sekarang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title"><i class="fas fa-headset text-success me-2"></i>Layanan Customer Service</h3>
+                <p class="card-text">Hubungi kami untuk informasi lebih lanjut mengenai sekolah</p>
+                <ul class="list-unstyled">
+                  <li><i class="fas fa-envelope me-2"></i>info@sdn03.sch.id</li>
+                  <li><i class="fas fa-phone me-2"></i>(021) 1234567</li>
+                  <li><i class="fas fa-map-marker-alt me-2"></i>Jl. Pendidikan No. 03, Baleendah</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mt-5 mb-4">Pengumuman Terbaru</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex mb-3">
+                  <div class="me-3">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px">
+                      <i class="fas fa-bullhorn"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h5>Pengumuman Libur Semester Ganjil</h5>
+                    <p class="text-muted mb-1">Dipublikasikan pada 05 januari 2025</p>
+                    <p>Diberitahukan kepada seluruh siswa, orang tua, dan guru bahwa libur semester ganjil akan dimulai pada tanggal 25 februari 2025 hingga 7 maret 2025.</p>
+                  </div>
+                </div>
+                <div class="d-flex mb-3">
+                  <div class="me-3">
+                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px">
+                      <i class="fas fa-calendar"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h5>Jadwal Ujian Tengah Semester</h5>
+                    <p class="text-muted mb-1">Dipublikasikan pada 5 januari 2025</p>
+                    <p>Ujian Tengah Semester Ganjil akan dilaksanakan pada tanggal 16-20 januari 2025. Mohon persiapan maksimal dari seluruh siswa.</p>
+                  </div>
+                </div>
+                <div class="d-flex">
+                  <div class="me-3">
+                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px">
+                      <i class="fas fa-trophy"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h5>Selamat kepada Siswa Berprestasi</h5>
+                    <p class="text-muted mb-1">Dipublikasikan pada 20 januari 2025</p>
+                    <p>Selamat kepada siswa yang telah meraih prestasi dalam berbagai kompetisi tingkat kecamatan dan kabupaten.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="footer-widget">
+              <h4>Tentang SDN 03</h4>
+              <p>SDN 03 adalah sekolah dasar negeri yang berkomitmen untuk memberikan pendidikan berkualitas dengan fokus pada pengembangan karakter, kreativitas, dan prestasi siswa.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="footer-widget">
+              <h4>Link Cepat</h4>
+              <ul class="footer-links">
+                <li><a href="#kepegawaian">Kepegawaian</a></li>
+                <li><a href="#sarana">Sarana & Prasarana</a></li>
+                <li><a href="#akademik">Akademik</a></li>
+                <li><a href="#siswa">Siswa</a></li>
+                <li><a href="#perpustakaan">Perpustakaan</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="footer-widget">
+              <h4>Kontak Kami</h4>
+              <div class="contact-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jl. Pendidikan No. 03, Jakarta</span>
+              </div>
+              <div class="contact-info">
+                <i class="fas fa-phone"></i>
+                <span>(021) 1234567</span>
+              </div>
+              <div class="contact-info">
+                <i class="fas fa-envelope"></i>
+                <span>info@sdn03.sch.id</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SDN 03. Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              window.scrollTo({
+                top: target.offsetTop - 70,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Update active navigation link on scroll
+        window.addEventListener("scroll", function () {
+          let current = "";
+          const sections = document.querySelectorAll("section[id]");
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 100) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").substring(1) === current) {
+              link.classList.add("active");
+            }
+          });
+        });
+
+        // Search functionality
+        const searchInput = document.querySelector(".search-input");
+        const searchBtn = document.querySelector(".search-btn");
+
+        searchBtn.addEventListener("click", function () {
+          const searchTerm = searchInput.value.trim();
+          if (searchTerm) {
+            // In a real application, this would perform an actual search
+            alert(`Mencari: "${searchTerm}"`);
+            searchInput.value = "";
+          }
+        });
+
+        searchInput.addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            searchBtn.click();
+          }
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = function () {
+          const elements = document.querySelectorAll(".card, .staff-card, .facility-card");
+
+          elements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+
+            if (elementTop < window.innerHeight && elementBottom > 0) {
+              element.classList.add("animate-fadeInUp");
+            }
+          });
+        };
+
+        window.addEventListener("scroll", animateOnScroll);
+        animateOnScroll(); // Initial check on page load
+      });
+    </script>
+  </body>
+</html>
